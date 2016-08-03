@@ -34,7 +34,3 @@ export class ProductSearchComponent implements OnInit{
   };
   onSearchBoxChange() { this.category = this.ProductService.getSearchProductName(this.search); };
 }
-
-@Component({
-
-})
