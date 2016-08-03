@@ -1,0 +1,7 @@
+<h1>Product Search</h1>
+<input type="text" [(ngModel)]="search" placeholder="search..."/><br />
+<input type="checkbox" (click)="onCheckBoxChange()" /> Only Show Product Stock
+<!-- checkbox는 [(ngModel)]이 적용 안되나? [(ngModel)]음...-->
+<h3><span>name</span> <span>price</span></h3>
+
+<product-category [search]="search" [onlyStock]="onlyStock"></product-category>
