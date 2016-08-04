@@ -4,6 +4,10 @@
 *.component.js.map
 *.service.js
 *.service.js.map
+*.ui.js
+*.ui.js.map
+main.js
+main.js.map
 *.log
 node_modules
 typings
