@@ -10,8 +10,7 @@ import { InputText } from '../ui/input.text.ui'
   template: `
     <h1>Product Search</h1>
     <inputText (getSearchValue)="getSearchValue($event)"></inputText>
-    <input type="checkbox" [(ngModel)]="onlyStock" (click)="onCheckBoxChange($event)" /> Only Show Product Stock
-    <!-- Output으로 부모에게 넘겨주기-->
+    <input type="checkbox" [ngModel]="onlyStock" (click)="onCheckBoxChange($event)" /> Only Show Product Stock
     <h3><span>name</span> <span>price</span></h3>
 
     <product-category [categorys]="category"></product-category>
