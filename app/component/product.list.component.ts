@@ -5,8 +5,9 @@ import { Product } from '../interface/product.interface'
   selector: 'product-list',
   template: `
     <div class="list">
+      <!--template 사용하기-->
       <div *ngFor="let product of products">
-        <span>{{product.name}}</span> {{product.price}}
+        <span>{{product?.name}}</span> {{product.price}}
       </div>
     </div>
   `,

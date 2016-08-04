@@ -52,18 +52,6 @@ export class ProductService {
   ];
 
   getProducts() {
-    console.log(
-      this.categorys.map((item) => {
-        return {
-          name : item.name,
-          product : item.product.filter((item) =>{
-            return item.name.indexOf('IPhone') !== -1
-          })
-        }
-      })
-    );
-    
-
     return this.categorys;
   };
 

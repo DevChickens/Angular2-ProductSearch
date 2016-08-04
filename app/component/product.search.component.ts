@@ -3,19 +3,20 @@ import { Component, OnInit } from '@angular/core';
 import { ProductCategoryComponent } from './product.category.component'
 import { Category } from '../interface/product.interface'
 import { ProductService } from '../service/product.service' 
+import { InputText } from '../ui/input.text.ui'
 
 @Component({
   selector: 'product-search',
   template: `
     <h1>Product Search</h1>
-    <input type="text" [(ngModel)]="search" placeholder="search..." (ngModelChange)="onSearchBoxChange()"/><br />
-    <input type="checkbox" [(ngModel)]="onlyStock" (click)="onCheckBoxChange()" /> Only Show Product Stock
-    <!-- checkbox는 [(ngModel)]이 적용 안되나? [(ngModel)]음...-->
+    <inputText (getSearchValue)="getSearchValue($event)"></inputText>
+    <input type="checkbox" [(ngModel)]="onlyStock" (click)="onCheckBoxChange($event)" /> Only Show Product Stock
+    <!-- Output으로 부모에게 넘겨주기-->
     <h3><span>name</span> <span>price</span></h3>
 
     <product-category [categorys]="category"></product-category>
   `,
-  directives: [ProductCategoryComponent],
+  directives: [ProductCategoryComponent, InputText],
   providers: [ProductService]
 })
 export class ProductSearchComponent implements OnInit{
@@ -29,8 +30,12 @@ export class ProductSearchComponent implements OnInit{
     this.category = this.ProductService.getProducts();
   }
 
+  getSearchValue(value){
+    this.category = this.ProductService.getSearchProductName(value); 
+  }
+
   onCheckBoxChange() { 
     this.category = !this.onlyStock ? this.ProductService.getSearchProductStock() : this.ProductService.getProducts(); 
   };
-  onSearchBoxChange() { this.category = this.ProductService.getSearchProductName(this.search); };
+  //onSearchBoxChange() { this.category = this.ProductService.getSearchProductName(this.search); };
 }
